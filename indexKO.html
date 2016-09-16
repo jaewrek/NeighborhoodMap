@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Escondido, The Hidden City</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <style>
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 70%; }
+    </style>
+ </head>
+ <body>
+  <div class="container text-center">
+    <h1 class ="text-center">Escondido, The Hidden City</h1>
+    <div class="row center" id="clickable">
+      <div data-bind="foreach: filterLayout">
+          <button data-bind="text: name, attr: { class: classB, id: idB }, click: filter"></button>
+      </div>
+      <div id="row"><br></div>
+      <form>
+        <input data-bind="textInput: input" placeholder="Type here to search!">
+        <!-- <button data-bind="text: functionButtons[0]"></button> -->
+      </form>
+      <span data-bind="if: emptySearch">Nothing found.</span>
+      <div class="row"><br>
+        <button data-bind="text: functionButtons[1], click: showAll" id="showALL"></button>
+        <button data-bind="text: functionButtons[2], click: hideAll"></button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="text-center">
+  	<p  class="text-center row" data-bind="if: markersShowing">Locations on Map:</p>
+	<div id="displayMarkers" style="height: 10%" class="text-center">
+	  	<ul style="list-style-type:none; padding-right: 1%; display: inline" data-bind="foreach: markersVisible">
+        <li style="list-style-type:none; padding-right: 1%; display: inline"><a href="#" data-bind="text: $data, click: triggerMarker, value: $data"></a></li>  
+      </ul>
+	</div>
+	</div>
+   <div class="fluid-container" id="map"></div>
+  
+   <script src="js/oauth-signature.min.js"></script>
+   <script src="js/jquery.js">
+   </script>
+   <script src="js/knockout.js">
+   </script>
+   <script src="js/scriptKO.js">
+   </script>
+   <script async src="https://maps.googleapis.com/maps/api/js?v=3&key=GOOGLE MAP KEY&callback=initMap" onerror="err_handler()">
+   </script>
+ </body>
+</html>
